@@ -21,27 +21,49 @@ public class Produto implements Serializable {
 	private long id;
 	
 	@Column(name = "quantidade")
-	private int quantidade;
+	private int quantity;
 	
 	@Column(name = "valor")
-	private double valor;
+	private double price;
 	
 	@Column(name = "titulo")
-	private String titulo;
+	private String title;
 	
+	@Column(name = "background")
+	private String background;
+	
+	@Column(name = "descricao")
+	private String description;
+	
+	@Column(name = "id_tipo")
+	private int idTipo;
+	
+	@Column(name = "id_tamanho")
+	private int idTamanho;
+
 	public Produto() {
 		
+		this.id = 0;
+		this.quantity = 0;
+		this.price = 0;
+		this.title = "";
+		this.background = "";
+		this.description = "";
+		this.idTipo = 0;
+		this.idTamanho = 0;
 	}
 
-	public Produto(long id, 
-			int quantidade, 
-			double valor, 
-			String titulo) {
-
+	public Produto(long id, int quantity, double price, String title, String background, String description, int idTipo,
+			int idTamanho) {
+		
 		this.id = id;
-		this.quantidade = quantidade;
-		this.valor = valor;
-		this.titulo = titulo;
+		this.quantity = quantity;
+		this.price = price;
+		this.title = title;
+		this.background = background;
+		this.description = description;
+		this.idTipo = idTipo;
+		this.idTamanho = idTamanho;
 	}
 
 	public long getId() {
@@ -54,35 +76,75 @@ public class Produto implements Serializable {
 		this.id = id;
 	}
 
-	public int getQuantidade() {
+	public int getQuantity() {
 		
-		return this.quantidade;
+		return this.quantity;
 	}
 
-	public void setQuantidade(int quantidade) {
+	public void setQuantity(int quantity) {
 		
-		this.quantidade = quantidade;
+		this.quantity = quantity;
 	}
 
-	public double getValor() {
+	public double getPrice() {
 		
-		return this.valor;
+		return this.price;
 	}
 
-	public void setValor(double valor) {
+	public void setPrice(double price) {
 		
-		this.valor = valor;
+		this.price = price;
 	}
 
-	public String getTitulo() {
+	public String getTitle() {
 		
-		return this.titulo;
+		return this.title;
 	}
 
-	public void setTitulo(String titulo) {
+	public void setTitle(String title) {
 		
-		this.titulo = titulo;
+		this.title = title;
 	}
+
+	public String getBackground() {
+		
+		return this.background;
+	}
+
+	public void setBackground(String background) {
+		
+		this.background = background;
+	}
+
+	public String getDescription() {
+		
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		
+		this.description = description;
+	}
+
+	public int getIdTipo() {
+		
+		return this.idTipo;
+	}
+
+	public void setIdTipo(int idTipo) {
+		
+		this.idTipo = idTipo;
+	}
+
+	public int getIdTamanho() {
+		
+		return this.idTamanho;
+	}
+
+	public void setIdTamanho(int idTamanho) {
+		
+		this.idTamanho = idTamanho;
+	}	
 }
 
 
