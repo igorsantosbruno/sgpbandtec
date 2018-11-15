@@ -33,7 +33,26 @@ public class ReservaProduto implements Serializable {
 
     @Column(name = "quantidade")
     private int quantity;
+
+    @Column(name = "quantidade_p")
+    private int p;
+
+    @Column(name = "quantidade_m")
+    private int m;
+
+    @Column(name = "quantidade_g")
+    private int g;
+
+    @Column(name = "quantidade_gg")
+    private int gg;
+
+    @Column(name = "quantidade_unico")
+    private int isUnique;
     
+    @Column(name = "preco_total")
+    private double totalPrice;
+
+
     public ReservaProduto() {
     	
     	this.id = 0;
@@ -43,16 +62,29 @@ public class ReservaProduto implements Serializable {
     	this.productId = 0;
     	this.userId = 0;
     	this.quantity = 0;
+        this.p = 0;
+        this.m = 0;
+        this.g = 0;
+        this.gg = 0;
+        this.isUnique = 0;
+        this.totalPrice = 0;
     }
 
-    public ReservaProduto(Date reservedDate, Date limitDate, int reservedStatus, long productId, long userId, int quantity) {
+    public ReservaProduto(Date reservedDate, Date limitDate, int reservedStatus,
+                          long productId, long userId, int quantity, int p, int m, int g, int gg, int isUnique, double totalPrice) {
     	
-        this.reservedDate = reservedDate;
         this.limitDate = limitDate;
+        this.reservedDate = reservedDate;
         this.reservedStatus = reservedStatus;
         this.productId = productId;
         this.userId = userId;
         this.quantity = quantity;
+        this.p = p;
+        this.m = m;
+        this.g = g;
+        this.gg = gg;
+        this.isUnique = isUnique;
+        this.totalPrice = totalPrice;
     }
 
     public long getId() {
@@ -123,4 +155,52 @@ public class ReservaProduto implements Serializable {
     	
         this.quantity = quantity;
     }
+
+    public int getP() {
+        return p;
+    }
+
+    public void setP(int p) {
+        this.p = p;
+    }
+
+    public int getM() {
+        return m;
+    }
+
+    public void setM(int m) {
+        this.m = m;
+    }
+
+    public int getG() {
+        return g;
+    }
+
+    public void setG(int g) {
+        this.g = g;
+    }
+
+    public int getGg() {
+        return gg;
+    }
+
+    public void setGg(int gg) {
+        this.gg = gg;
+    }
+
+    public int getIsUnique() {
+        return isUnique;
+    }
+
+    public void setIsUnique(int isUnique) {
+        this.isUnique = isUnique;
+    }
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 }

@@ -1,10 +1,15 @@
 package br.com.sgp.util;
 
-import br.com.sgp.query.model.ProdutoQuery;
 import org.springframework.web.multipart.MultipartFile;
+
+import br.com.sgp.model.query.ProdutoQuery;
+
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.Stack;
+import java.util.Calendar;
 
 public class ProdutoUtil {
 
@@ -18,9 +23,33 @@ public class ProdutoUtil {
             e.printStackTrace();
         }
 
-        return strImg;
+        return "data:image/" + getExtensaoSemPontoImagem(imagem.getOriginalFilename()) + ";base64," + strImg;
 
     }
+    
+	public String getExtensaoSemPontoImagem(String imagem) {
+
+		String extensao = "";
+		int tamanhoExtensao = 0;
+		Stack<String> pilhaExtensao = new Stack<>();
+		for (int i = imagem.length() - 1; i >= 0; i--) {
+
+			String caracter = "" + imagem.charAt(i);
+			if (!caracter.equals(".")) {
+
+				pilhaExtensao.push(caracter);
+				tamanhoExtensao++;
+			} else {
+
+				break;
+			}
+		}
+		for (int i = 0; i < tamanhoExtensao; i++) {
+
+			extensao += pilhaExtensao.pop();
+		}
+		return extensao;
+	}
 
     public String construirQueryBuscarPorTipo(String[] tipos) {
 
@@ -35,9 +64,20 @@ public class ProdutoUtil {
             query += " OR B.descricao =" + "'" + tipos[i] + "'" ;
         }
 
-        System.out.println(query);
-
         return query;
     }
-
+    
+    public Date ajustarDataReservaProduto(Date dataLimite, int quantidadeDia) {
+    	
+    	Calendar calendar = Calendar.getInstance();
+    	calendar.setTime(dataLimite);
+    	calendar.add( Calendar.DAY_OF_MONTH , quantidadeDia );
+    	dataLimite = calendar.getTime();
+    	return dataLimite;
+    }
 }
+
+
+
+
+
